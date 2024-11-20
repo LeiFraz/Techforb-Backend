@@ -16,6 +16,7 @@ plantsModel.init(
         nombre: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
                 notEmpty: true,
                 min: 4,
@@ -25,18 +26,22 @@ plantsModel.init(
         lecturas: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            defaultValue: 0
         },
         alertas_medias: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            defaultValue: 0
         },
         alertas_rojas: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            defaultValue: 0
         },
         sensores_deshabilitados: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            defaultValue: 0
         },
         pais: {
             type: DataTypes.STRING,

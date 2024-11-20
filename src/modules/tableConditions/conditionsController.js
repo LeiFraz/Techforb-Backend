@@ -4,7 +4,7 @@ export const findAll = async(req,res) => {
     try {
         const data = await service.findAll()
 
-        if(!data || data === null){
+        if(data.length === 0 || data === null){
             res.status(404).json({error: 'No se encontraron condiciones ambientales'})
             return;
         }
