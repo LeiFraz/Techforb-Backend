@@ -1,5 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
-import { mySqlSequelize } from '../../database/dbConnect.js';
+import mySqlSequelize from '../../database/dbConnect.js';
+import bcrypt from 'bcrypt'
 
 const sequelize = mySqlSequelize;
 
@@ -7,7 +8,7 @@ class userModel extends Model {}
 
 userModel.init(
     {
-        idUser: {
+        id_Usuario: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
@@ -41,26 +42,20 @@ userModel.init(
         freezeTableName: true,
         createdAt: false,
         timestamps: false,
-        tableName: 'user'
+        tableName: 'usuario'
     }
 )
-// ).addHook('afterSync', 'insertInitialValues', async() => {
-//     const count = userModel.count()
 
-//     if (count === 0) {
-//         await userModel.bulkCreate([
-//             {idUser: 1, correo: 'admin@gmail.com', nombre: 'Juan Pablo', contrasenia: '12345678'},
-//             {idUser: 2, correo: 'test@gmail.com', nombre: 'Pepe Aguilar', contrasenia: '12345678'}
-//         ])
-//     }
-// });
 export const usersDefault = async() => {
     const count = await userModel.count()
     
+    const contra1 = await bcrypt.hash('admin', 10)
+    const contra2 = await bcrypt.hash('test', 10)
+
     if (count === 0) {
         await userModel.bulkCreate([
-            {idUser: 1, correo: 'admin@gmail.com', nombre: 'Juan Pablo', contrasenia: '12345678'},
-            {idUser: 2, correo: 'test@gmail.com', nombre: 'Pepe Aguilar', contrasenia: '12345678'}
+            {id_usuario: 1, correo: 'admin@gmail.com', nombre: 'Juan Pablo', contrasenia: contra1},
+            {id_usuario: 2, correo: 'test@gmail.com', nombre: 'Pepe Aguilar', contrasenia: contra2}
         ])
     }
 }
