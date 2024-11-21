@@ -1,14 +1,14 @@
 import express from 'express'
 import * as user from './userController.js'
-// import authToken from '../../middleware/authToken.js'
+import verifyToken from '../../middleware/verifyToken.js'
 
 // import axios from 'axios'
 
 const userRoutes = express.Router()
 
 //login
-userRoutes.get('/login', user.login)
-userRoutes.post('/registro', user.register)
+userRoutes.post('/login', verifyToken, user.login)
+userRoutes.post('/registro', verifyToken, user.register)
 // userRoutes.get('/prueba', authToken, async(req,res) => {
 //     try {
 //         const ApiPais = await axios.get('https://restcountries.com/v3.1/all')

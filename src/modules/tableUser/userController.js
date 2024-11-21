@@ -7,7 +7,7 @@ export const login = async(req,res) => {
         const body = req.body;
 
         //validaciones
-        
+        console.log(body.correo, body.contrasenia)
         const data = await services.login(body)
 
         if(!data || data === null){

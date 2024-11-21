@@ -26,7 +26,7 @@ export const findPlants = async(req, res) => {
             return {
                 id_Plantas: pts.id_Plantas,
                 nombre: pts.nombre,
-                lecturas: pts.lectura,
+                lecturas: pts.lecturas,
                 alertas_medias: pts.alertas_medias,
                 alertas_rojas: pts.alertas_rojas,
                 pais: pts.pais,

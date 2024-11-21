@@ -1,7 +1,7 @@
 import mySqlSequelize from "../../database/dbConnect.js"
 import plantsModel from "./plantsModel.js"
 
-export const findPlants = async(body) => {
+export const findPlants = async() => {
     try {
         const response = await plantsModel.findAll()
         
@@ -32,7 +32,7 @@ export const findStatus = async() => {
             [
                 [mySqlSequelize.fn('SUM', mySqlSequelize.col('lecturas')), 'lecturas'],
                 [mySqlSequelize.fn('SUM', mySqlSequelize.col('alertas_medias')), 'alertas_medias'],
-                [mySqlSequelize.fn('SUM', mySqlSequelize.col('alertas_rojas')), 'alertas_rojs'],
+                [mySqlSequelize.fn('SUM', mySqlSequelize.col('alertas_rojas')), 'alertas_rojas'],
                 [mySqlSequelize.fn('SUM', mySqlSequelize.col('sensores_deshabilitados')), 'sensores_deshabilitados'],
             ]
         })
