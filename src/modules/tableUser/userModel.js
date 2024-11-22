@@ -49,8 +49,8 @@ userModel.init(
 export const usersDefault = async() => {
     const count = await userModel.count()
     
-    const contra1 = await bcrypt.hash('123456789', 10)
-    const contra2 = await bcrypt.hash('123456789', 10)
+    const contra1 = await bcrypt.hash('administrador1', 10)
+    const contra2 = await bcrypt.hash('usuarioTest1', 10)
 
     if (count === 0) {
         await userModel.bulkCreate([
