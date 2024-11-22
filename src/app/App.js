@@ -25,6 +25,15 @@ app.use('/api/paises', async(req,res) => {
                 name: pais.name.common
             }
         })
+        paises.sort((a, b)=> {
+            if (a.name > b.name) {
+              return 1;
+            }
+            if (a.name < b.name) {
+              return -1;
+            }
+            return 0;
+          });
 
         res.status(200).json(paises)
     } catch (error) {
